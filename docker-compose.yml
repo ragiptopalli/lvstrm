@@ -1,7 +1,7 @@
-version: '2'
+version: '3.9'
 services:
   db:
-    image: mariadb:10.5
+    image: mariadb:11.2
     restart: 'no'
     environment:
       MYSQL_DATABASE: lvstrm
@@ -20,10 +20,20 @@ services:
     environment:
       PMA_HOST: db
       PMA_PORT: 3306
-      PMA_ARBITRARY: 1
-      UPLOAD_LIMIT: 900M
     restart: always
     ports:
       - 888:80
+  ngrok:
+    image: ngrok/ngrok:latest
+    restart: unless-stopped
+    command:
+      - 'start'
+      - '--all'
+      - '--config'
+      - '/etc/ngrok.yml'
+    volumes:
+      - ./ngrok.yml:/etc/ngrok.yml
+    ports:
+      - 4040:4040
 volumes:
   mysql-data:
