@@ -11,9 +11,17 @@ interface HintProps {
   asChild?: boolean;
   side?: 'top' | 'bottom' | 'left' | 'right';
   align?: 'start' | 'center' | 'end';
+  hidden?: boolean;
 }
 
-export const Hint = ({ label, children, asChild, side, align }: HintProps) => {
+export const Hint = ({
+  label,
+  children,
+  asChild,
+  side,
+  align,
+  hidden = true,
+}: HintProps) => {
   return (
     <TooltipProvider>
       <Tooltip delayDuration={0}>
@@ -22,6 +30,7 @@ export const Hint = ({ label, children, asChild, side, align }: HintProps) => {
           className='text-black bg-white'
           side={side}
           align={align}
+          hidden={!hidden}
         >
           <p className='font-semibold'>{label}</p>
         </TooltipContent>
