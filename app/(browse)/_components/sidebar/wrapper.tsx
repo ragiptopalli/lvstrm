@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils';
 import { useIsClient } from 'usehooks-ts';
 import { ToggleSkeleton } from './toggle';
 import { RecommendedSkeleton } from './recommended';
+import { FollowingSkeleton } from './following';
 
 export const Wrapper = ({ children }: { children: React.ReactNode }) => {
   const isClient = useIsClient();
@@ -14,7 +15,7 @@ export const Wrapper = ({ children }: { children: React.ReactNode }) => {
     return (
       <aside className='fixed left-0 flex flex-col w-[70px] lg:w-60 h-full bg-background border-r border-[#2D2E35] z-50'>
         <ToggleSkeleton />
-        {/* <FollowingSkeleton /> */}
+        <FollowingSkeleton />
         <RecommendedSkeleton />
       </aside>
     );
