@@ -28,10 +28,7 @@ export async function POST(req: Request) {
         isLive: true,
       },
     });
-    return new Response('Started streaming', { status: 200 });
-  }
-
-  if (webhookEvent.event === 'ingress_ended') {
+  } else if (webhookEvent.event === 'ingress_ended') {
     await db.stream.update({
       where: {
         ingressId: webhookEvent.ingressInfo?.ingressId,
@@ -40,6 +37,9 @@ export async function POST(req: Request) {
         isLive: false,
       },
     });
-    return new Response('Stopped streaming', { status: 200 });
+  } else {
+    return new Response(`Unsupported event: ${webhookEvent.event}`, {
+      status: 400,
+    });
   }
 }
