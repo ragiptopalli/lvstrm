@@ -6,7 +6,7 @@ export const getUserByUsername = async (username: string) => {
       username,
     },
     include: {
-      Stream: true,
+      stream: true,
     },
   });
 
@@ -17,7 +17,7 @@ export const getUserById = async (id: string) => {
   const user = await db.user.findUnique({
     where: { id },
     include: {
-      Stream: true,
+      stream: true,
     },
   });
 

@@ -4,7 +4,7 @@ import { useViewerToken } from '@/hooks/use-viewer-token';
 import { Stream, User } from '@prisma/client';
 
 interface StreamPlayerProps {
-  user: User & { Stream: Stream | null };
+  user: User & { stream: Stream | null };
   stream: Stream;
   isFollowing: boolean;
 }

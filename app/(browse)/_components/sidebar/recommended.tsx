@@ -5,7 +5,7 @@ import { User } from '@prisma/client';
 import { UserItem, UserItemSkeleton } from './user-item';
 
 interface RecommendedProps {
-  users: (User & { Stream: { isLive: boolean } | null })[];
+  users: (User & { stream: { isLive: boolean } | null })[];
 }
 
 export const Recommended = ({ users }: RecommendedProps) => {
@@ -23,12 +23,12 @@ export const Recommended = ({ users }: RecommendedProps) => {
         </div>
       )}
       <ul className='space-y-2 px-2'>
-        {users.map(({ id, username, imageUrl, Stream }) => (
+        {users.map(({ id, username, imageUrl, stream }) => (
           <UserItem
             key={id}
             username={username}
             imageUrl={imageUrl}
-            isLive={Stream?.isLive}
+            isLive={stream?.isLive}
           />
         ))}
       </ul>
