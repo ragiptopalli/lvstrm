@@ -26,7 +26,7 @@ export const onBlock = async (id: string) => {
   try {
     await roomService.removeParticipant(self.id, id);
   } catch {
-    // This means user is not in the room
+    // user is not in the room
   }
 
   revalidatePath(`/u/${self.username}/community`);
@@ -35,13 +35,9 @@ export const onBlock = async (id: string) => {
 };
 
 export const onUnblock = async (id: string) => {
+  const self = await getSelf();
   const unblockedUser = await unblockUser(id);
 
-  revalidatePath('/');
-
-  if (unblockedUser) {
-    revalidatePath(`/${unblockedUser.blocked.username}`);
-  }
-
+  revalidatePath(`/u/${self.username}/community`);
   return unblockedUser;
 };
