@@ -3,14 +3,13 @@
 import { type ReceivedChatMessage } from '@livekit/components-react';
 
 import { format } from 'date-fns';
-import { stringToColor } from '@/lib/utils';
-
+import stc from 'string-to-color';
 interface ChatMessageProps {
   data: ReceivedChatMessage;
 }
 
 export const ChatMessage = ({ data }: ChatMessageProps) => {
-  const color = stringToColor(data.from?.name || '');
+  const color = stc(data.from?.name || '');
 
   return (
     <div className='flex gap-2 p-2 rounded-md hover:bg-white/5'>

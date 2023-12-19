@@ -6,8 +6,10 @@ import { MinusCircle } from 'lucide-react';
 
 import { Hint } from '@/components/hint';
 import { onBlock } from '@/actions/block';
-import { cn, stringToColor } from '@/lib/utils';
+import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+
+import stc from 'string-to-color';
 
 interface CommunityItemProps {
   hostName: string;
@@ -24,7 +26,7 @@ export const CommunityItem = ({
 }: CommunityItemProps) => {
   const [isPending, startTransition] = useTransition();
 
-  const color = stringToColor(participantName || '');
+  const color = stc(participantName || '');
   const isSelf = participantName === viewerName;
   const isHost = viewerName === hostName;
 
