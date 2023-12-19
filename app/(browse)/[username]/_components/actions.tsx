@@ -1,7 +1,7 @@
 'use client';
 
 import { onBlock } from '@/actions/block';
-import { onFollow, onUnFollow } from '@/actions/follow';
+import { onFollow, onUnfollow } from '@/actions/follow';
 import { Button } from '@/components/ui/button';
 import { useTransition } from 'react';
 import { toast } from 'sonner';
@@ -14,7 +14,7 @@ interface ActionsProp {
 export const Actions = ({ userId, isFollowing }: ActionsProp) => {
   const [isPending, startTransition] = useTransition();
 
-  const handleFollowUser = () => {
+  const handleFollow = () => {
     startTransition(() => {
       onFollow(userId)
         .then(({ following }) =>
@@ -26,11 +26,11 @@ export const Actions = ({ userId, isFollowing }: ActionsProp) => {
     });
   };
 
-  const handleUnfollowUser = () => {
+  const handleUnfollow = () => {
     startTransition(() => {
-      onUnFollow(userId)
+      onUnfollow(userId)
         .then(({ following }) =>
-          toast.success(`You have unfollowed ${following.username}`)
+          toast.success(`Unfollowed ${following.username}`)
         )
         .catch(() =>
           toast.error('Something went wrong, please try again later!')
@@ -54,7 +54,7 @@ export const Actions = ({ userId, isFollowing }: ActionsProp) => {
     <>
       <Button
         disabled={isPending}
-        onClick={isFollowing ? handleUnfollowUser : handleFollowUser}
+        onClick={isFollowing ? handleUnfollow : handleFollow}
         variant='primary'
       >
         {isFollowing ? 'Unfollow' : 'Follow'}
