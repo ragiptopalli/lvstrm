@@ -31,10 +31,12 @@ export const BioModal = ({ initialValue }: BioModalProps) => {
     startTransition(() => {
       updateUser({ bio: value })
         .then(() => {
-          toast.success('User bio updated');
+          toast.success('Bio updated');
           closeRef.current?.click();
         })
-        .catch(() => toast.error('Something went wrong'));
+        .catch(() =>
+          toast.error('Something went wrong, please try again later')
+        );
     });
   };
 
@@ -47,7 +49,7 @@ export const BioModal = ({ initialValue }: BioModalProps) => {
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Edit user bio</DialogTitle>
+          <DialogTitle>Edit your bio</DialogTitle>
         </DialogHeader>
         <form onSubmit={onSubmit} className='space-y-4'>
           <Textarea
