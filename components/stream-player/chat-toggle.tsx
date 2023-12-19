@@ -10,7 +10,7 @@ export const ChatToggle = () => {
   const { collapsed, onExpand, onCollapse } = useChatSidebar((state) => state);
 
   const Icon = collapsed ? ArrowLeftFromLine : ArrowRightFromLine;
-  const label = collapsed ? 'Expand Chat' : 'Collapse';
+  const label = collapsed ? 'Expand' : 'Collapse';
 
   const handleToggle = () => {
     if (collapsed) {
