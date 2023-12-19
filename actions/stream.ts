@@ -21,6 +21,7 @@ export const updateStream = async (values: Partial<Stream>) => {
       chatEnabled: values.chatEnabled,
       chatDelayed: values.chatDelayed,
       chatFollowerOnly: values.chatFollowerOnly,
+      thumbnailUrl: values.thumbnailUrl,
     };
 
     const stream = await db.stream.update({
