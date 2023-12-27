@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
-import { SignInButton, UserButton, currentUser } from '@clerk/nextjs';
+import { UserButton } from '@clerk/nextjs';
 
-import { Clapperboard, LogOut } from 'lucide-react';
+import { LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export const Actions = () => {
